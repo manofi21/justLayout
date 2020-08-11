@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 import 'package:tempatMakna/constant.dart';
+import 'package:tempatMakna/widget/button.dart';
+import 'package:tempatMakna/widget/image.dart';
 import 'tapdart.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       .map(
         (String value) => DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: Text(value, style: TextStyle(fontSize: 14),),
         ),
       )
       .toList();
@@ -34,14 +36,12 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Cart Details",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "14.300 point - Change Your Points",
                     style: TextStyle(
-                        color: Colors.red,
-                        decoration: TextDecoration.underline),
-                  )
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).textScaleFactor + 13),
+                  ),
+                  SizedBox(width: 20),
+                  pointButton(MediaQuery.of(context).textScaleFactor + 13)
                 ],
               ),
               Divider(),
@@ -57,13 +57,13 @@ class HomeScreen extends StatelessWidget {
                       child: Checkbox(value: false, onChanged: (value) {}),
                     ),
                   ),
-                  fotoMakanan("assets/ayamCabeIjo.jpeg", 'Ayam Cabe Ijo',
-                      '2 Sachet(s)'),
+                  fotoMakanan(context, "assets/ayamCabeIjo.jpeg",
+                      'Ayam Cabe Ijo', '2 Sachet(s)'),
                   Spacer(),
                   Text(
                     "Rp. 225.000",
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: MediaQuery.of(context).textScaleFactor + 13.5,
                       fontWeight: FontWeight.bold,
                       color: Colors.red,
                     ),
@@ -87,15 +87,16 @@ class HomeScreen extends StatelessWidget {
                       child: Checkbox(value: false, onChanged: (value) {}),
                     ),
                   ),
-                  fotoMakanan("assets/oporAyam.jpg", "Opor Ayam \nKuah Pedas",
-                      "3 Tray(s)"),
+                  fotoMakanan(context, "assets/oporAyam.jpg",
+                      "Opor Ayam \nKuah Pedas", "3 Tray(s)"),
                   Spacer(),
                   Text(
                     "Rp. 355.000",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.red,
-                        fontSize: 12),
+                        fontSize:
+                            MediaQuery.of(context).textScaleFactor + 13.5),
                   ),
                 ],
               ),
@@ -111,8 +112,8 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Spacer(),
                   SizedBox(
-                    height: 35,
-                    width: 115,
+                    height: 30,
+                    width: (MediaQuery.of(context).size.width / 3) + 10,
                     child: Container(
                         decoration: BoxDecoration(
                             color: redRemoveAndAdd,
@@ -125,6 +126,8 @@ class HomeScreen extends StatelessWidget {
                                 Icon(
                                   Icons.delete_sweep,
                                   color: Colors.white,
+                                  size: MediaQuery.of(context).textScaleFactor +
+                                      14,
                                 ),
                                 SizedBox(
                                   width: 5,
@@ -132,15 +135,18 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   "Remove",
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 11),
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context)
+                                              .textScaleFactor +
+                                          12),
                                 ),
                               ],
                             ))),
                   ),
                   SizedBox(width: 5),
                   SizedBox(
-                    height: 35,
-                    width: 115,
+                    height: 30,
+                    width: (MediaQuery.of(context).size.width / 3) + 10,
                     child: Container(
                         decoration: BoxDecoration(
                             color: redRemoveAndAdd,
@@ -153,6 +159,8 @@ class HomeScreen extends StatelessWidget {
                                 Icon(
                                   Icons.add_shopping_cart,
                                   color: Colors.white,
+                                  size: MediaQuery.of(context).textScaleFactor +
+                                      14,
                                 ),
                                 SizedBox(
                                   width: 5,
@@ -160,7 +168,10 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   "Add items",
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 11),
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context)
+                                              .textScaleFactor +
+                                          13),
                                 ),
                               ],
                             ))),
@@ -176,17 +187,21 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Shipping Options",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).textScaleFactor + 13),
                   ),
                   Row(
                     children: [
                       Icon(
                         Icons.location_on,
                         color: Colors.red[400],
+                        size: MediaQuery.of(context).textScaleFactor + 17,
                       ),
                       Text(
                         "Point location",
                         style: TextStyle(
+                            fontSize:  MediaQuery.of(context).textScaleFactor + 11.5,
                             color: Colors.red[400],
                             decoration: TextDecoration.underline),
                       ),
@@ -246,22 +261,23 @@ class HomeScreen extends StatelessWidget {
                             ))
                       ],
                     ),
-                    padding: EdgeInsets.only(right: 10, left: 5, bottom: 20),
+                    padding: EdgeInsets.only(right: 10, left: 30, bottom: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        SizedBox(height: 5),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
                                 "Choose courier:",
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: MediaQuery.of(context).textScaleFactor + 11, color: red),
                               ),
                               Container(
                                 decoration: BoxDecoration(color: Colors.white),
                                 child: Container(
-                                  width: 100,
-                                  height: 35,
+                                  width: 95,
+                                  height: 28,
                                   padding: const EdgeInsets.only(
                                       left: 10.0, right: 10.0),
                                   decoration: BoxDecoration(
@@ -277,9 +293,10 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               )
                             ]),
+                        SizedBox(height: 3),
                         Text(
                           "Total Weight: 2 Kilogram(s)",
-                          style: TextStyle(color: Colors.grey, fontSize: 10),
+                          style: TextStyle(color: Colors.grey, fontSize: 9),
                         )
                       ],
                     ),
@@ -294,7 +311,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Coupon",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).textScaleFactor + 13),
                   ),
                 ],
               ),
@@ -313,6 +330,7 @@ class HomeScreen extends StatelessWidget {
                           contentPadding:
                               EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                           labelText: "Place your coupon code..",
+                          labelStyle: TextStyle(fontSize: 13),
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
                             // borderRadius: BorderRadius.circular(25.0),
@@ -328,8 +346,8 @@ class HomeScreen extends StatelessWidget {
                     width: 10,
                   ),
                   SizedBox(
-                    height: 30,
-                    width: 108,
+                    height: 29,
+                    width: MediaQuery.of(context).size.width / 3,
                     child: Container(
                         decoration: BoxDecoration(
                             color: green,
@@ -340,7 +358,7 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.check,
+                                  Icons.verified_user_outlined,
                                   color: Colors.white,
                                 ),
                                 SizedBox(
@@ -349,7 +367,7 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   "Apply",
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 13),
+                                      color: Colors.white, fontSize: 12),
                                 ),
                               ],
                             ))),
@@ -440,35 +458,31 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-Widget fotoMakanan(String image, String name, String value) {
+Widget fotoMakanan(
+    BuildContext context, String image, String name, String value) {
   return Column(
     children: [
       Container(
         child: Row(
           children: [
             Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.transparent.withOpacity(0.2),
-                      blurRadius: 2.0,
-                      spreadRadius: 3.0,
-                      offset: Offset(
-                        0.0,
-                        2.0,
-                      ))
-                ],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              margin: EdgeInsets.zero,
-              padding: EdgeInsets.all(6),
-              child: Image.asset(
-                // "assets/ayamCabeIjo.jpeg",
-                image,
-                height: 47,
-              ),
-            ),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.transparent.withOpacity(0.2),
+                        blurRadius: 2.0,
+                        spreadRadius: 3.0,
+                        offset: Offset(
+                          0.0,
+                          2.0,
+                        ))
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                margin: EdgeInsets.zero,
+                padding: EdgeInsets.all(6),
+                child: dynamicImage(image, context)),
             SizedBox(
               width: 8,
             ),
@@ -476,15 +490,11 @@ Widget fotoMakanan(String image, String name, String value) {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // SizedBox(
-                //   height: 4,
-                // ),
                 Text(
-                  // 'Ayam Cabe Ijo',
                   name,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).textScaleFactor + 13.5),
                 ),
                 SizedBox(
                   height: 6,

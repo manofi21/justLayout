@@ -26,51 +26,59 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
     );
   }
 }
-  BottomAppBar buildBottomAppBar(BuildContext context) {
-    return BottomAppBar(
-      shape: CircularNotchedRectangle(),
-      color: Theme.of(context).primaryColor,
-      child: Container(
-        padding: EdgeInsets.all(15),
-        child: Row(
-          children: <Widget>[
-            Text(
-              "Total:  ",
+
+BottomAppBar buildBottomAppBar(BuildContext context) {
+  return BottomAppBar(
+    shape: CircularNotchedRectangle(),
+    color: Theme.of(context).primaryColor,
+    child: Container(
+      padding: EdgeInsets.all(15),
+      child: Row(
+        children: <Widget>[
+          Text(
+            "Total:",
+            style: TextStyle(
+                color: Colors.white,
+                decoration: TextDecoration.underline,
+                fontSize: 10),
+          ),
+          Text("  Rp. 617.000,-",
               style: TextStyle(
                   color: Colors.white,
-                  decoration: TextDecoration.underline,
-                  fontSize: 10),
-            ),
-            Text("Rp. 617.000",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20)),
-            Spacer(),
-            SizedBox(
-              height: 35,
-              width: 138,
-              child: Container(
-                  decoration: BoxDecoration(color: green, borderRadius: BorderRadius.circular(5)),
-                  child: FlatButton(
-                      onPressed: () {},
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18)),
+          Spacer(),
+          SizedBox(
+            height: 35,
+            // width: MediaQuery.of(context).size.width / 2,
+            child: Container(
+                decoration: BoxDecoration(
+                    color: green, borderRadius: BorderRadius.circular(5)),
+                child: InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            MyFlutterApp.checklist,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                      Icon(
+                        MyFlutterApp.checklist,
+                        color: Colors.white,
+                        size: 17,
+                      ),
+                      Text(
+                        "Confirm Order",
+                        style: TextStyle(
                             color: Colors.white,
-                          ),
-                          Text(
-                            "Confirm Order",
-                            style: TextStyle(color: Colors.white, fontSize: 13),
-                          ),
-                        ],
-                      ))),
-            ),
-          ],
-        ),
+                            fontSize:
+                                MediaQuery.of(context).textScaleFactor + 11.5,
+                            fontWeight: FontWeight.bold),
+                      ),
+                  ],
+                ),
+                    ))),
+          ),
+        ],
       ),
-    );
-  }
-
+    ),
+  );
+}
